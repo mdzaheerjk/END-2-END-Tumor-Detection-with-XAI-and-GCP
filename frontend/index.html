@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OncoScan AI | Advanced Tumor Detection</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Persistent Header -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">🧠</span>
+                <h1>OncoScan <span class="accent">AI</span></h1>
+            </div>
+            <p class="subtitle">Next-gen Brain & Breast Tumor Analysis powered by DL</p>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Left Panel: Input & Controls -->
+            <aside class="panel upload-panel">
+                <div class="panel-header">
+                    <h2>Input Scan</h2>
+                </div>
+
+                <div class="upload-zone" id="upload-section">
+                    <div class="upload-prompt">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        <p id="file-name-display">Click or drag image to upload</p>
+                    </div>
+                    <input type="file" id="file-input" class="hidden" accept="image/*">
+                </div>
+
+                <div id="preview-container" class="preview-container hidden">
+                    <div class="img-frame preview-frame">
+                        <img id="preview-image" alt="Preview">
+                    </div>
+                    <button class="btn btn-primary" id="predict-btn">
+                        <span id="btn-text">Analyze Scan</span>
+                        <div class="spinner hidden" id="btn-loader"></div>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Right Panel: Insights & Visualization -->
+            <section class="panel results-panel">
+                <div class="panel-header">
+                    <h2>Analysis Results</h2>
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state">
+                    <p>Analysis insights will appear here once you upload a scan.</p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="results-loader-container" class="loader-container hidden">
+                    <div class="spinner large"></div>
+                </div>
+
+                <!-- Data Display -->
+                <div id="prediction-results" class="results-content hidden">
+                    <div class="metrics-row">
+                        <div class="metric-card">
+                            <span class="metric-label">Diagnosis</span>
+                            <span class="metric-value" id="diagnosis-value">-</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Confidence</span>
+                            <span class="metric-value" id="confidence-value">-</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Probability Distribution</h3>
+                        <div id="prob-bars" class="prob-bars"></div>
+                    </div>
+
+                    <!-- GradCAM: Collapsible Dropdown -->
+                    <div id="gradcam-container" class="visualization-container hidden">
+                        <details id="gradcam-details" class="gradcam-dropdown">
+                            <summary class="gradcam-summary">
+                                <span class="summary-icon">🌡️</span>
+                                <span>View GradCAM Heatmap</span>
+                                <span class="summary-chevron">▾</span>
+                            </summary>
+                            <div class="gradcam-body">
+                                <div class="img-frame cam-frame">
+                                    <img id="gradcam-image" alt="GradCAM Heatmap">
+                                </div>
+                                <p class="insight-note">Hotter regions indicate higher importance for the model's
+                                    decision.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2026 OncoScan AI Research. For research purposes only.</p>
+        </footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

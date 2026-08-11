@@ -1,0 +1,399 @@
+:root {
+    --bg-main: #020617;
+    --bg-panel: rgba(15, 23, 42, 0.6);
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.3);
+    --accent: #10b981;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 16px;
+    --radius-lg: 1.25rem;
+    --radius-md: 0.75rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1300px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Header */
+.app-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+}
+
+.app-header h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+}
+
+.app-header .accent {
+    color: var(--primary);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Panel Styles */
+.panel {
+    background: var(--bg-panel);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.panel-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+}
+
+.panel-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Upload Section */
+.upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-md);
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.upload-zone:hover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.upload-prompt .icon {
+    width: 3rem;
+    height: 3rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.upload-prompt p {
+    color: var(--text-secondary);
+}
+
+/* Preview & Buttons */
+.preview-container {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.img-frame {
+    width: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+}
+
+.img-frame img {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* Uploaded scan preview — kept compact so it doesn't dominate the panel */
+.preview-frame {
+    max-height: 220px;
+}
+
+.preview-frame img {
+    max-height: 220px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.875rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 14px 0 var(--primary-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+/* Results Content */
+.empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.metrics-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Charts & Viz */
+.chart-container h3,
+.visualization-container h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.prob-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.prob-row {
+    display: grid;
+    grid-template-columns: 85px 1fr 45px;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.class-name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.bar-track {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 4px;
+    width: 0;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bar-fill.accent {
+    background: var(--accent);
+}
+
+.pct {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+.visualization-container {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+/* GradCAM collapsible dropdown */
+.gradcam-dropdown {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+.gradcam-dropdown[open] {
+    border-color: var(--primary);
+}
+
+.gradcam-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.875rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+    background: rgba(99, 102, 241, 0.06);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    list-style: none;
+    /* Remove the browser's default triangle */
+    transition: background 0.2s ease;
+}
+
+.gradcam-summary::-webkit-details-marker {
+    display: none;
+}
+
+.gradcam-summary:hover {
+    background: rgba(99, 102, 241, 0.12);
+}
+
+.summary-icon {
+    font-size: 1.1rem;
+}
+
+.summary-chevron {
+    margin-left: auto;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+    color: var(--text-secondary);
+}
+
+.gradcam-dropdown[open] .summary-chevron {
+    transform: rotate(180deg);
+}
+
+.gradcam-body {
+    padding: 1rem 1.25rem 1.25rem;
+}
+
+/* GradCAM image — capped so it doesn't stretch the page */
+.cam-frame {
+    border-color: var(--primary-glow);
+    max-height: 320px;
+}
+
+.cam-frame img {
+    max-height: 320px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.insight-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.75rem;
+}
+
+/* Loaders */
+.spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.spinner.large {
+    width: 3rem;
+    height: 3rem;
+    border-width: 3px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Footer */
+.app-footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
