@@ -26,7 +26,7 @@ def get_logger(name:str='TuorAI')->logging.Logger:
     console_handler.setFormatter(fmt)
     logger.addHandler(console_handler)
 
-    today=datetime.now().strftime('%Y-&M-%d')
+    today=datetime.now().strftime('%Y-%m-%d')
     logs_path=os.path.join(LOGS_DIR,f"{today}.log")
 
     file_handler=TimedRotatingFileHandler(

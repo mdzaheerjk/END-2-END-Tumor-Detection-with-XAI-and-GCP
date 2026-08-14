@@ -2,8 +2,8 @@ import os
 
 BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-HF_REPO_ID=''
-MODEL_FILENAME=''
+HF_REPO_ID='Diveshj/brain-breast'
+MODEL_FILENAME='trig_model.keras'
 
 IMG_SIZE=128
 

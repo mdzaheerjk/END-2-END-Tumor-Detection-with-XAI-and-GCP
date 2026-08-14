@@ -42,7 +42,7 @@ def overlay_gradcam(orignal_img:np.ndarray,heatmap:np.ndarray,alpha:float=0.4)->
         heatmap_colored=cv2.applyColorMap(heatmap_unit8,cv2.COLORMAP_JET)
         blended_bgr=cv2.addWeighted(heatmap_colored,alpha,orignal_img,1.0-alpha,0)
 
-        return cv2.cvtColor(blended_bgr,cv2.COLOR_BAYER_BG2RGB)
+        return cv2.cvtColor(blended_bgr,cv2.COLOR_BGR2RGB)
     except Exception as e:
         logger.error(f"GradCAM overplay error:{e}")
         raise
